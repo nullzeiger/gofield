@@ -19,6 +19,12 @@ const Rowcols = 10
 const Mines = 5
 // Map symbol
 const Mapchar = "󱔐"
+// Mine symbol
+const Minechar = "󰷚"
+// Flag symbol
+const Flagchar = ""
+// Hero symbol
+const Herochar = ""
 
 // Arrive data structure
 type Arrive struct {
@@ -57,7 +63,7 @@ func CreateMap(a Arrive) [][]string {
 func CreateMines() [Mines]Mine {
 	var m [Mines]Mine
 	for i := 0; i < len(m); i++ {
-		m[i] = Mine{char: "󰷚", y: rand.IntN(Rowcols), x: rand.IntN(Rowcols)}
+		m[i] = Mine{char: Minechar, y: rand.IntN(Rowcols), x: rand.IntN(Rowcols)}
 	}
 
 	return m
@@ -65,7 +71,7 @@ func CreateMines() [Mines]Mine {
 
 // Create random arrive
 func CreateArrive() Arrive {
-	return Arrive{char: "", y: rand.IntN(Rowcols), x: rand.IntN(Rowcols)}
+	return Arrive{char: Flagchar, y: rand.IntN(Rowcols), x: rand.IntN(Rowcols)}
 }
 
 // Clear console and print map
@@ -88,7 +94,7 @@ func PrintMap(m [][]string, h Hero) {
 }
 
 func main() {
-	hero := Hero{"", 0, 0}
+	hero := Hero{Herochar, 0, 0}
 	mines := CreateMines()
 	arrive := CreateArrive()
 	newMap := CreateMap(arrive)
